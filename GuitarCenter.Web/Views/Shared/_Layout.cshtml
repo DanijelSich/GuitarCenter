@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="~/Content/images/slika1.jpg" width="1140" />
+                    <div class="carousel-caption">
+                        <h3>Akcija</h3>
+                        <p>Popusti do 50% na sve artikle.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="~/Content/images/slika2.jpg" width="1140" />
+                    <div class="carousel-caption">
+                        <h3>Novogodišnji popusti</h3>
+                        <p>Popusti do 50% na sve artikle.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="~/Content/images/slika3.jpg" width="1140" />
+                    <div class="carousel-caption">
+                        <h3>Nova kolekcija</h3>
+                        <p>Stigla je nova kolekcija gitara.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Guitar Center", "Index", "Product", new { area = "Products" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active">@Html.ActionLink("Početna", "Index", "Product", new { area = "Products" }, null)</li>
+                        <li class="active">@Html.ActionLink("Korpa", "Index", "Cart", new { area = "Products" }, null)</li>
+                        @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
+                        {
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Administracija
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Proizvodi", "Index", "Product", new { area = "Administrations" }, null)</li>
+                                    <li>@Html.ActionLink("Brendovi", "Index", "Brand", new { area = "Administrations" }, null)</li>
+                                    <li>@Html.ActionLink("Kategorije", "Index", "Category", new { area = "Administrations" }, null)</li>
+                                    <li>@Html.ActionLink("Korisnici", "Index", "User", new { area = "Administrations" }, null)</li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/Account/Logout"><span class="glyphicon glyphicon-log-out"></span> Izloguj se</a></li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/Account/Register"><span class="glyphicon glyphicon-user"></span> Registruj se</a></li>
+                            <li><a href="/Account/Login"><span class="glyphicon glyphicon-log-in"></span> Uloguj se</a></li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        </nav>
+
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Guitar Center</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿@model GuitarCenter.Web.Areas.Administrations.Models.CategoryListPageViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Podaci o kategorijama</h2>
+<hr />
+
+@if (Model.Success)
+{
+    @Html.RouteLink("Kreiraj novu",
+        new
+        {
+            action = "Create",
+            controller = "Category",
+            area = "Administrations"
+        },
+        new { @class = "btn btn-default" }
+    )
+    <table class="table table-bordred table-striped">
+        <thead>
+            <tr>
+                <th>Ime kategorije</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var category in Model.CategoryViewModels)
+            {
+                <tr>
+                    <td>@category.Name</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Category", new { categoryId = category.CategoryId })" class="btn btn-primary-table btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a href="@Url.Action("Delete", "Category", new { categoryId = category.CategoryId })" class="btn btn-primary-table btn-xs" onclick="return confirm('Da li ste sigurni da želite da obrišete datu kategoriju?')"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Greška!</strong> @Model.ErrorMessage
+            </div>
+        </div>
+    </div>
+}

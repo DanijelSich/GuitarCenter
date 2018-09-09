@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "DeliveryOperator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Operator za dostavu</h2>
+<hr />
+
+@using (Html.BeginForm("DeliveryOperator", "Cart", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <div class="form-group">
+        <label class="control-label col-md-2">Operator:</label>
+        <div class="col-md-10">
+            @Html.DropDownList("operatorName", new List<SelectListItem>()
+           {
+               new SelectListItem() {Text = "Bex", Value = "Bex" },
+               new SelectListItem() {Text = "Aks", Value = "Aks" }
+           }, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <input class="btn btn-default" type="submit" value="Potvrdi" />
+        </div>
+    </div>
+}

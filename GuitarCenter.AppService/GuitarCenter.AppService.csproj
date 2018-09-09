@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{61AA1251-10FF-44F9-A16D-6596A0F42334}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GuitarCenter.AppService</RootNamespace>
+    <AssemblyName>GuitarCenter.AppService</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstractions\Brands\IBrandService.cs" />
+    <Compile Include="Abstractions\Categories\ICategoryService.cs" />
+    <Compile Include="Abstractions\Products\IProductService.cs" />
+    <Compile Include="Abstractions\Users\IUserService.cs" />
+    <Compile Include="Implementations\Brands\BrandService.cs" />
+    <Compile Include="Implementations\Categories\CategoryService.cs" />
+    <Compile Include="Implementations\Products\ProductService.cs" />
+    <Compile Include="Implementations\Users\UserService.cs" />
+    <Compile Include="Mappings\Brands\BrandMapper.cs" />
+    <Compile Include="Mappings\Categories\CategoryMapper.cs" />
+    <Compile Include="Mappings\Products\ProductMapper.cs" />
+    <Compile Include="Mappings\Users\UserMapper.cs" />
+    <Compile Include="Messages\Abstractions\ResponseBase.cs" />
+    <Compile Include="Messages\Brands\CreateBrandRequest.cs" />
+    <Compile Include="Messages\Brands\CreateBrandResponse.cs" />
+    <Compile Include="Messages\Brands\DeleteBrandRequest .cs" />
+    <Compile Include="Messages\Brands\DeleteBrandResponse.cs" />
+    <Compile Include="Messages\Brands\FindAllBrandsResponse.cs" />
+    <Compile Include="Messages\Brands\UpdateBrandRequest.cs" />
+    <Compile Include="Messages\Brands\UpdateBrandResponse.cs" />
+    <Compile Include="Messages\Categories\CreateCategoryRequest.cs" />
+    <Compile Include="Messages\Categories\CreateCategoryResponse.cs" />
+    <Compile Include="Messages\Categories\DeleteCategoryRequest .cs" />
+    <Compile Include="Messages\Categories\DeleteCategoryResponse.cs" />
+    <Compile Include="Messages\Categories\FindAllCategoriesResponse.cs" />
+    <Compile Include="Messages\Categories\UpdateCategoryRequest.cs" />
+    <Compile Include="Messages\Categories\UpdateCategoryResponse.cs" />
+    <Compile Include="Messages\Products\CreateProductRequest.cs" />
+    <Compile Include="Messages\Products\CreateProductResponse.cs" />
+    <Compile Include="Messages\Products\DeleteProductRequest .cs" />
+    <Compile Include="Messages\Products\DeleteProductResponse.cs" />
+    <Compile Include="Messages\Products\FindAllProductsResponse.cs" />
+    <Compile Include="Messages\Products\UpdateProductRequest.cs" />
+    <Compile Include="Messages\Products\UpdateProductResponse.cs" />
+    <Compile Include="Messages\Users\AuthenticateUserRequest.cs" />
+    <Compile Include="Messages\Users\AuthenticateUserResponse.cs" />
+    <Compile Include="Messages\Users\CreateUserRequest.cs" />
+    <Compile Include="Messages\Users\CreateUserResponse.cs" />
+    <Compile Include="Messages\Users\DeleteUserRequest.cs" />
+    <Compile Include="Messages\Users\DeleteUserResponse.cs" />
+    <Compile Include="Messages\Users\FindAllUsersResponse.cs" />
+    <Compile Include="Messages\Users\UpdateUserRequest.cs" />
+    <Compile Include="Messages\Users\UpdateUserResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GuitarCenter.Model\GuitarCenter.Model.csproj">
+      <Project>{5d4be044-efd1-4234-8117-5ca71b7236f0}</Project>
+      <Name>GuitarCenter.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

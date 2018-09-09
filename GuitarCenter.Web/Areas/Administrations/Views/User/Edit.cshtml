@@ -1,0 +1,61 @@
+﻿@model GuitarCenter.Web.Areas.Administrations.Models.UserSinglePageViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kreiranje/izmena podataka o korisnicima</h2>
+<hr />
+
+@if (Model.Success)
+{
+    using (Html.BeginForm("Edit", "User", null, FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.HiddenFor(x => x.UserViewModel.UserId)
+        <div class="form-group">
+            <label class="control-label col-md-2">Korisničko ime:</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.UserViewModel.Username, new { @class = "form-control" })
+                @Html.ValidationMessage("UserViewModel.Username")
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Lozinka:</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.UserViewModel.Password, new { @class = "form-control" })
+                @Html.ValidationMessage("UserViewModel.Password")
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">E-mail:</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.UserViewModel.Email, new { @class = "form-control" })
+                @Html.ValidationMessage("UserViewModel.Email")
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Rola:</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.UserViewModel.Role, new SelectList(Enum.GetNames(typeof(GuitarCenter.Model.Entities.Users.Role)), Model.UserViewModel.Role), new { @class = "form-control" })
+                @Html.ValidationMessage("ProductViewModel.Color")
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input class="btn btn-default" type="submit" value="Potvrdi" />
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Greška!</strong> @Model.ErrorMessage
+            </div>
+        </div>
+    </div>
+}

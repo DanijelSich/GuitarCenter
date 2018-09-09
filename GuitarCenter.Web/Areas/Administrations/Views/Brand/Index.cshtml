@@ -1,0 +1,54 @@
+﻿@model GuitarCenter.Web.Areas.Administrations.Models.BrandListPageViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Podaci o brendovima</h2>
+<hr />
+
+@if (Model.Success)
+{
+    @Html.RouteLink("Kreiraj novi",
+        new
+        {
+            action = "Create",
+            controller = "Brand",
+            area = "Administrations"
+        },
+        new { @class = "btn btn-default" }
+    )
+    <table class="table table-bordred table-striped">
+        <thead>
+            <tr>
+                <th>Ime brenda</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var brand in Model.BrandViewModels)
+            {
+                <tr>
+                    <td>@brand.Name</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Brand", new { brandId = brand.BrandId })" class="btn btn-primary-table btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a href="@Url.Action("Delete", "Brand", new { brandId = brand.BrandId })" class="btn btn-primary-table btn-xs" onclick="return confirm('Da li ste sigurni da želite da obrišete dati brend?')"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Greška!</strong> @Model.ErrorMessage
+            </div>
+        </div>
+    </div>
+}

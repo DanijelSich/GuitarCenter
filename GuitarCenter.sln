@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Data Access Layer", "1. Data Access Layer", "{4BD62823-1F55-4253-9BBD-EBD9241092DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Business Logic Layer", "2. Business Logic Layer", "{5C2C7C34-9386-4D5D-A857-7FA46EA2A3EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Service Layer", "3. Service Layer", "{4DB73847-06E1-4266-A741-C345A062E9E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Presentation Layer", "4. Presentation Layer", "{3D7E28E0-DC07-46DA-A2D5-918F2C239D84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarCenter.Model", "GuitarCenter.Model\GuitarCenter.Model.csproj", "{5D4BE044-EFD1-4234-8117-5CA71B7236F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarCenter.AppService", "GuitarCenter.AppService\GuitarCenter.AppService.csproj", "{61AA1251-10FF-44F9-A16D-6596A0F42334}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarCenter.Repository", "GuitarCenter.Repository\GuitarCenter.Repository.csproj", "{9C1CEF11-B690-4E2C-8ADF-109438C50D73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarCenter.Web", "GuitarCenter.Web\GuitarCenter.Web.csproj", "{E98B2CF0-C68C-40B7-B059-F88609332B6A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D4BE044-EFD1-4234-8117-5CA71B7236F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D4BE044-EFD1-4234-8117-5CA71B7236F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D4BE044-EFD1-4234-8117-5CA71B7236F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D4BE044-EFD1-4234-8117-5CA71B7236F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61AA1251-10FF-44F9-A16D-6596A0F42334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61AA1251-10FF-44F9-A16D-6596A0F42334}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61AA1251-10FF-44F9-A16D-6596A0F42334}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61AA1251-10FF-44F9-A16D-6596A0F42334}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C1CEF11-B690-4E2C-8ADF-109438C50D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C1CEF11-B690-4E2C-8ADF-109438C50D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C1CEF11-B690-4E2C-8ADF-109438C50D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C1CEF11-B690-4E2C-8ADF-109438C50D73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E98B2CF0-C68C-40B7-B059-F88609332B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E98B2CF0-C68C-40B7-B059-F88609332B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E98B2CF0-C68C-40B7-B059-F88609332B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E98B2CF0-C68C-40B7-B059-F88609332B6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5D4BE044-EFD1-4234-8117-5CA71B7236F0} = {5C2C7C34-9386-4D5D-A857-7FA46EA2A3EC}
+		{61AA1251-10FF-44F9-A16D-6596A0F42334} = {4DB73847-06E1-4266-A741-C345A062E9E1}
+		{9C1CEF11-B690-4E2C-8ADF-109438C50D73} = {4BD62823-1F55-4253-9BBD-EBD9241092DC}
+		{E98B2CF0-C68C-40B7-B059-F88609332B6A} = {3D7E28E0-DC07-46DA-A2D5-918F2C239D84}
+	EndGlobalSection
+EndGlobal

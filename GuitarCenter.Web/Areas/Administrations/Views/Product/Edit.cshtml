@@ -1,0 +1,88 @@
+﻿@model GuitarCenter.Web.Areas.Administrations.Models.ProductSinglePageViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kreiranje/izmena podataka o proizvodima</h2>
+<hr />
+
+@if (Model.Success)
+{
+    using (Html.BeginForm("Edit", "Product", null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(x => x.ProductViewModel.ProductId)
+        <div class="form-group">
+            <label class="control-label col-md-2">Ime proizvoda:</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.ProductViewModel.Name, new { @class = "form-control" })
+                @Html.ValidationMessage("ProductViewModel.Name")
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Opis proizvoda:</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(x => x.ProductViewModel.Description, new { @class = "form-control" })
+                @Html.ValidationMessage("ProductViewModel.Description")
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Cena:</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.ProductViewModel.Price, new { @class = "form-control" })
+                @Html.ValidationMessage("ProductViewModel.Price")
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Boja:</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.ProductViewModel.Color, new { @class = "form-control" })
+                @Html.ValidationMessage("ProductViewModel.Color")
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Veličina:</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.ProductViewModel.Size, new { @class = "form-control" })
+                @Html.ValidationMessage("ProductViewModel.Size")
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Brend:</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.ProductViewModel.BrandId, new SelectList(Model.BrandViewModels, "BrandId", "Name"), new { @class = "form-control" })
+                @Html.ValidationMessage("ProductViewModel.BrandId")
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Kategorija:</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.ProductViewModel.CategoryId, new SelectList(Model.CategoryViewModels, "CategoryId", "Name"), new { @class = "form-control" })
+                @Html.ValidationMessage("ProductViewModel.CategoryId")
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Slike:</label>
+            <div class="col-md-10">
+                <input type="file" id="fileToUpload" name="fileUpload" multiple="multiple" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input class="btn btn-default" type="submit" value="Potvrdi" />
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Greška!</strong> @Model.ErrorMessage
+            </div>
+        </div>
+    </div>
+}

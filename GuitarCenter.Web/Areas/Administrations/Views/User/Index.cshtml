@@ -1,0 +1,60 @@
+﻿@model GuitarCenter.Web.Areas.Administrations.Models.UserListPageViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Podaci o korisnicima</h2>
+<hr />
+
+@if (Model.Success)
+{
+    @Html.RouteLink("Kreiraj novog",
+        new
+        {
+            action = "Create",
+            controller = "User",
+            area = "Administrations"
+        },
+        new { @class = "btn btn-default" }
+    )
+    <table class="table table-bordred table-striped">
+        <thead>
+            <tr>
+                <th>Korisnicko ime</th>
+                <th>Lozinka</th>
+                <th>E-mail</th>
+                <th>Rola</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var product in Model.UserViewModels)
+            {
+                <tr>
+                    <td>@product.Username</td>
+                    <td>@product.Password</td>
+                    <td>@product.Email</td>
+                    <td>@product.Role</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "User", new { userId = product.UserId })" class="btn btn-primary-table btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a href="@Url.Action("Delete", "User", new { userId = product.UserId })" class="btn btn-primary-table btn-xs" onclick="return confirm('Da li ste sigurni da želite da obrišete datog korisnika?')"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Greška!</strong> @Model.ErrorMessage
+            </div>
+        </div>
+    </div>
+}

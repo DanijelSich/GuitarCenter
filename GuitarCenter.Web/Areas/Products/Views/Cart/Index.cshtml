@@ -1,0 +1,53 @@
+﻿@model GuitarCenter.Web.Areas.Products.Models.CartPageViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Korpa</h2>
+<hr />
+
+<table class="table table-striped table-hover table-bordered">
+    <tbody>
+        <tr>
+            <th>Proizvod</th>
+            <th>Količina</th>
+            <th>Jedinična cena</th>
+            <th>Ukupna cena</th>
+            <th></th>
+        </tr>
+        @foreach (var line in Model.Cart.Lines)
+        {
+            <tr>
+                <td>@line.Product.Name</td>
+                <td>@line.Quantity</td>
+                <td>@line.Product.Price.ToString()</td>
+                <td>@((line.Quantity * line.Product.Price).ToString())</td>
+                <td>
+                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                {
+                    @Html.Hidden("ProductId", line.Product.ProductId)
+                    @Html.HiddenFor(x => x.ReturnUrl)
+                    <input class="btn btn-danger" type="submit" value="Ukloni" />
+                }
+        </tr>
+        }
+        <tr>
+            <th colspan="4"><span class="pull-right">Cena</span></th>
+            <th>@Model.Cart.ComputeTotalValue().ToString()</th>
+        </tr>
+        <tr>
+            <th colspan="4"><span class="pull-right">PDV</span></th>
+            <th>@((Model.Cart.ComputeTotalValue() * 0.2M).ToString())</th>
+        </tr>
+        <tr>
+            <th colspan="4"><span class="pull-right">Ukupno</span></th>
+            <th>@((Model.Cart.ComputeTotalValue() + Model.Cart.ComputeTotalValue() * 0.2M).ToString())</th>
+        </tr>
+        <tr>
+            <td><a href="@Model.ReturnUrl" class="btn btn-primary">Nastavi kupovinu</a></td>
+            <td colspan="4">@Html.ActionLink("Potvrdi", "ShippingAddress", null, new { @class = "pull-right btn btn-success" })</td>
+        </tr>
+    </tbody>
+</table>

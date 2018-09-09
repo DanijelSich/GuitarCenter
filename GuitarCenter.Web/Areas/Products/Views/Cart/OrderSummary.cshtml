@@ -1,0 +1,61 @@
+﻿@model GuitarCenter.Model.Entities.Orders.Order
+
+@{
+    ViewBag.Title = "OrderSummary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Narudzbina</h2>
+<hr />
+
+<table class="table table-striped table-hover table-bordered">
+    <tbody>
+        <tr>
+            <th>Proizvod</th>
+            <th>Količina</th>
+            <th>Jedinična cena</th>
+            <th>Ukupna cena</th>
+        </tr>
+        @foreach (var line in Model.Cart.Lines)
+        {
+            <tr>
+                <td>@line.Product.Name</td>
+                <td>@line.Quantity</td>
+                <td>@line.Product.Price.ToString()</td>
+                <td>@((line.Quantity * line.Product.Price).ToString())</td>
+            </tr>
+        }
+        <tr>
+            <th colspan="3"><span class="pull-right">Cena</span></th>
+            <th>@Model.Cart.ComputeTotalValue().ToString()</th>
+        </tr>
+        <tr>
+            <th colspan="3"><span class="pull-right">Cena sa popustom</span></th>
+            <th>@Model.Cart.ComputeTotalValueAfterDiscount().ToString()</th>
+        </tr>
+        <tr>
+            <th colspan="3"><span class="pull-right">Dostava</span></th>
+            <th>@Model.DeliveryOperator.getDeliveryPrice().ToString()</th>
+        </tr>
+        <tr>
+            <th colspan="3"><span class="pull-right">PDV</span></th>
+            <th>@((Model.Cart.ComputeTotalValueAfterDiscount() * 0.2M).ToString())</th>
+        </tr>
+        <tr>
+            <th colspan="3"><span class="pull-right">Ukupno</span></th>
+            <th>
+                @((Model.Cart.ComputeTotalValueAfterDiscount() +
+                    Model.Cart.ComputeTotalValueAfterDiscount() * 0.2M +
+                    Model.DeliveryOperator.getDeliveryPrice()).ToString())
+        </th>
+    </tr>
+    <tr>
+        <th><span>Adresa</span></th>
+        <th colspan="3">
+            @Model.ShippingDetails.Address,
+        @Model.ShippingDetails.City,
+        @Model.ShippingDetails.Country
+    </th>
+</tr>
+</tbody>
+</table>
